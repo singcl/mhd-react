@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+// 编译jsx文件
 var react = require('gulp-react')
 
 gulp.task("default", function() {
