@@ -24,13 +24,13 @@ npm init
 ```
 ```js
 //全局安装
-npm install -g webpack
+npm i -g webpack
 //安装到你的项目目录
-npm install --save-dev webpack
+npm i webpack -D
 ```
 
 ### 2.2 创建项目结构
-![](https://github.com/Marco2333/react-demo/blob/master/demo/demo00%20webpack/1.png)
+![webpck项目简图](./1.png)
 
 index.html
 ```html
@@ -65,7 +65,7 @@ document.getElementById('root').appendChild(greeter());
 ```
 
 ### 2.3 正式使用webpack
-#### 终端运行最基础的命令
+#### Command Line 命令行执行webpack
 ```js
 webpack {entry file/入口文件} {destination for bundled file/存放bundle.js的地方}
 ```
