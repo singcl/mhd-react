@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
     "dll": "webpack --config ./webpack.dll.config.js",
-    "server": "webpack-dev-server"
+    "webpack": "webpack",
+    "server": "webpack-dev-server",
+    "build": "npm run dll && npm run webpack"
   },
   "author": "singcl",
   "license": "ISC",
