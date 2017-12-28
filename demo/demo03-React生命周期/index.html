@@ -11,8 +11,10 @@
 	<script src="../build/react.js"></script>
 	<script src="../build/react-dom.js"></script>
 	<script src="../build/browser.min.js"></script>
-	<script type="text/babel">
-		class Counter extends React.Component{
+    <script type="text/babel">
+        // babel浏览器环境使用：http://www.ruanyifeng.com/blog/2016/01/babel.html
+        /* eslint-disable no-undef, no-unused-vars */
+		class Counter extends React.Component {
 			constructor(props){
 				super(props)
 				this.state = { count : 0 }
