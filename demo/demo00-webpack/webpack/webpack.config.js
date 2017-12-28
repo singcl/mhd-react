@@ -8,10 +8,10 @@ module.exports = {
         path: path.resolve(__dirname, './public'),
         filename: 'bundle.js'
     },
-    externals: {
-		'react': 'window.React',
-		'react-dom': 'window.ReactDOM'
-	},
+    // externals: {
+	// 	'react': 'window.React',
+	// 	'react-dom': 'window.ReactDOM'
+	// },
     module: {
         loaders: [
             {
@@ -29,6 +29,12 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+		new webpack.DllReferencePlugin({
+			context: __dirname,
+			manifest: require('./manifest.json'),
+		})
+	],
     devServer: {
         contentBase: "./public",
         inline: true,

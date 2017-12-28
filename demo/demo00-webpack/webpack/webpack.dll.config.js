@@ -1,7 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const venders = ['react', 'react-dom',/*其他库*/]
+/*其他库*/
+const venders = ['react', 'react-dom']
 
 module.exports = {
     entry: {
