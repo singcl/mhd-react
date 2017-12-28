@@ -8,15 +8,20 @@ module.exports = {
         path: path.resolve(__dirname, './public'),
         filename: 'bundle.js'
     },
+    externals: {
+		'react': 'window.React',
+		'react-dom': 'window.ReactDOM'
+	},
     module: {
         loaders: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'es2015']
-                }
+                loader: 'babel-loader'
+                // .babelrc 替换这里的babel配置
+                // query: {
+                //     presets: ['react', 'es2015']
+                // }
             },
             {
                 test: /\.css$/,
@@ -26,6 +31,7 @@ module.exports = {
     },
     devServer: {
         contentBase: "./public",
-        inline: true
+        inline: true,
+        historyApiFallback: true
     }
 }
