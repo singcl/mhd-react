@@ -29,7 +29,7 @@ ES6(React.Component)
 - `componentWillUnmount()`
 
 ## 以一图以蔽之
-![](https://github.com/Marco2333/react-demo/blob/master/demo/images/demo03_1.png)
+![组件的生命周期](../images/demo03_1.png)
 
 ## Reference
 
