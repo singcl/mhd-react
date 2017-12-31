@@ -2,9 +2,11 @@ module.exports = {
     verbose: true,
     collectCoverage: true,
     "collectCoverageFrom": [
-        "**/*.{js}",
+        // "**/*.{js}",  // 要测试的文件
+        "*.js",
         "!**/node_modules/**",
-        "!**/vendor/**"
+        "!**/vendor/**",
+        "!coverage"
     ],
     coverageDirectory: "coverage"
 }
