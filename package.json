@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest && codecov",
-    "nginx": "nginx-server.conf.js && cd nginx-1.13.7/ && start nginx",
+    "nginx": "node nginx-server.conf.js && cd nginx-1.13.7/ && start nginx",
     "stop": "cd nginx-1.13.7/ && nginx -s stop"
   },
   "keywords": [
