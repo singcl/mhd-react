@@ -95,7 +95,7 @@ data.path +
 var _nodeInit = function(data) {
     /*初始化*/
     var sum = 0
-    var pathImg = 'nginx-1.13.7/conf/vhost/'
+    var pathImg = 'nginx/conf/vhost/'
     files = fs.readdirSync(pathImg)
     files.forEach(function(file, index) {
         // 记总共步数
