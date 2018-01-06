@@ -4,7 +4,9 @@
   "description": "React 从入门到放弃！",
   "main": "index.js",
   "scripts": {
-    "test": "jest && codecov"
+    "test": "jest && codecov",
+    "nginx": "nginx-server.conf.js && cd nginx-1.13.7/ && start nginx",
+    "stop": "cd nginx-1.13.7/ && nginx -s stop"
   },
   "keywords": [
     "react"

@@ -42,3 +42,16 @@ ginx-1.13.7\html/index.html" failed (123: The filename, directory name, or volum
 2018/01/06 17:09:50 [error] 12028#12232: *3 CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/data.path/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: 127.0.0.1, request: "GET /index.html HTTP/1.1", host: "127.0.0.1:8016"
 2018/01/06 17:09:51 [error] 12028#12232: *3 CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/data.path/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: 127.0.0.1, request: "GET /index.html HTTP/1.1", host: "127.0.0.1:8016"
 2018/01/06 17:22:36 [alert] 3684#12256: OpenEvent("ngx_master_9340") failed (2: The system cannot find the file specified)
+2018/01/06 17:50:06 [notice] 10504#6764: signal process started
+2018/01/06 17:51:34 [notice] 9068#8340: signal process started
+2018/01/06 17:51:34 [error] 9068#8340: CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2018/01/06 17:52:05 [notice] 8088#10004: signal process started
+2018/01/06 17:52:47 [notice] 11388#12212: signal process started
+2018/01/06 17:53:00 [notice] 11396#11640: signal process started
+2018/01/06 17:53:00 [error] 11396#11640: CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2018/01/06 17:53:12 [notice] 8384#8968: signal process started
+2018/01/06 17:53:12 [error] 8384#8968: CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/logs/nginx.pid" failed (2: The system cannot find the file specified)
+2018/01/06 17:55:31 [alert] 11836#11996: OpenEvent("ngx_master_11788") failed (2: The system cannot find the file specified)
+2018/01/06 17:56:00 [notice] 11276#7320: signal process started
+2018/01/06 17:57:03 [notice] 10364#10084: signal process started
+2018/01/06 17:57:03 [error] 10364#10084: CreateFile() "C:\Users\Administrator\Desktop\mhd-react\nginx-1.13.7/logs/nginx.pid" failed (2: The system cannot find the file specified)
