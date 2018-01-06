@@ -52,3 +52,4 @@ codecov_token.js
 
 # NGINX
 nginx/logs/*.log
+nginx/conf/vhost/*.conf
