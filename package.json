@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest && codecov",
-    "nginx": "node nginx-server.conf.js && cd nginx-1.13.7/ && start nginx",
-    "stop": "cd nginx-1.13.7/ && nginx -s stop"
+    "nginx": "node nginx-server.conf.js && cd nginx/ && start nginx",
+    "stop": "cd nginx/ && nginx -s stop"
   },
   "keywords": [
     "react"
