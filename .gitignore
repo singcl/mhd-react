@@ -50,4 +50,4 @@ coverage
 codecov_token.js
 
 # NGINX
-nginx-1.13.7/logs/
+nginx/logs/*.log
