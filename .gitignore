@@ -51,6 +51,5 @@ coverage
 codecov_token.js
 
 # NGINX
-nginx/logs/*.log
-nginx/logs/*.pid
+nginx/logs
 nginx/conf/vhost/*.conf
