@@ -2,7 +2,7 @@
 var fs = require('fs')
 var path = require('path')
 
-/* ------------------------------------- nginx server 配置处 ------------------------------------- */
+/* ------------------------------------- nginx http server 配置处 ------------------------------------- */
 /*栗子*/
 var data = [
     {
@@ -17,7 +17,7 @@ var data = [
         port: 8017, // 端口
         path: path.resolve(__dirname, './').replace(/\\/g, '/'), // 本地项目路径(注意NGINX 配置中必须使用linux通用的'/')
         index: 'index', // 项目首页的html文件名
-        url: 'https://timeline-merger-ms.juejin.im/' // 请求的url
+        url: 'http://recommender-api-ms.juejin.im/' // 请求的url
     }
 ]
 
@@ -54,7 +54,7 @@ server {
 // nginx -s stop 关闭服务
 // ajax请求的时候，用相对路径
 
-/* ------------------------------------- 以下为写入NGXIN 配置 ------------------------------------- */
+/* ------------------------------------- 以下为写入NGXIN HTTP 配置 ------------------------------------- */
 // 写反向代理服务器配置文件，不存在则创建 http://nodejs.cn/api/fs.html#fs_fs_access_path_mode_callback
 function proxyServerConf(data) {
     data.forEach(function(item, index) {

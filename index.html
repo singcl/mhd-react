@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HELLO WORLD</title>
 </head>
+
 <body>
     HELLO WORLD!
+    <button onclick="XHR()">click tieba</button>
+    <button onclick="XHR2()">click juejin</button>
+    <script>
+        function XHR() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText)
+                }
+            }
+            var parmas = {"appid":"tieba","cuid":"73118464C47E43476FB3E50ACD8E32C9:FG:1","connection_id":"","lcs_ip":"10.46.235.62","lcs_port":"8891","lcs_fd":"10619","device_type":"21"}
+            xhr.open('POST', '/connectmanager/user/updateFlashInfo', true)
+            // setRequestHeader 必须在OPEN 方法之后设置
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.send(JSON.stringify(parmas))
+        }
+        function XHR2() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText)
+                }
+            }
+            xhr.open('GET', '/v1/get_recommended_entry?suid=2yZJQ37Yb7iinuzYqqaQ&ab=welcome_6&src=web', true)
+            // setRequestHeader 必须在OPEN 方法之后设置
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.send()
+        }
+    </script>
 </body>
+
 </html>
