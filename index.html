@@ -12,6 +12,7 @@
     <h3>HELLO WORLD!</h3>
     <button onclick="XHR()">click tieba</button>
     <button onclick="XHR2()">click juejin</button>
+    <button onclick="XHR3()">click qq music</button>
     <div>
         <h4>请求结果</h4>
         <p id="result"></p>
@@ -45,7 +46,25 @@
             xhr.setRequestHeader('Content-Type', 'application/json')
             xhr.send()
         }
+        function XHR3() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText)
+                    document.getElementById('result').innerHTML = xhr.responseText
+                }
+            }
+            xhr.open('GET', '/qqmusic/v8/fcg-bin/fcg_v8_toplist_opt.fcg?page=index&format=html&tpl=macv4&v8debug=1&jsonCallback=jsonCallback', true)
+            // setRequestHeader 必须在OPEN 方法之后设置
+            xhr.setRequestHeader('Content-Type', 'application/json')
+            xhr.send()
+        }
+        //
+        function jsonCallback(res) {
+            document.getElementById('result').innerHTML = JSON.stringify(res)
+        }
     </script>
+    <script type="text/javascript" src="https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_opt.fcg?page=index&format=html&tpl=macv4&v8debug=1&jsonCallback=jsonCallback"></script>
 </body>
 
 </html>

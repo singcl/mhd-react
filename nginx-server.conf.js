@@ -15,6 +15,9 @@ var conf = [
         }, {
             name: 'juejin', // 名称 --- 不能中文字符
             url: 'http://recommender-api-ms.juejin.im/' // 请求的url
+        }, {
+            name: 'qqmusic', // 名称 --- 不能中文字符
+            url: 'https://c.y.qq.com/' // 请求的url
         }]
     },
     {
