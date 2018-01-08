@@ -51,5 +51,7 @@ coverage
 codecov_token.js
 
 # NGINX
-nginx/logs
+# git 会自动忽略空文件夹，所有文件中一定要有文件！
+nginx/logs/**/*
+!nginx/logs/*.txt
 nginx/conf/vhost/*.conf
