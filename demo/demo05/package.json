@@ -1,0 +1,30 @@
+{
+  "name": "react-mock",
+  "version": "0.0.1",
+  "description": "React Mock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dll": "webpack --config ./webpack.dll.config.js",
+    "build": "npm run dll && cross-env ./node_modules/.bin/webpack",
+    "server": "cross-env ./node_modules/.bin/webpack-dev-server"
+  },
+  "keywords": [
+    "React",
+    "Mock"
+  ],
+  "author": "singcl",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "mockjs": "^1.0.1-beta3",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
