@@ -2,7 +2,8 @@
 
 [![CircleCI branch](https://img.shields.io/circleci/project/github/singcl/mhd-react/master.svg?style=flat-square)](https://circleci.com/gh/singcl)
 [![Codecov branch](https://img.shields.io/codecov/c/github/singcl/mhd-react/master.svg?style=flat-square)](https://circleci.com/gh/singcl)
-[![node (tag)](https://img.shields.io/node/v/mhd-react/latest.svg?style=flat-square)]()
+[![node (tag)](https://img.shields.io/node/v/mhd-react/latest.svg?style=flat-square)][![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_shield)
+()
 [![npm](https://img.shields.io/npm/v/mhd-react.svg?style=flat-square)](https://www.npmjs.com/package/mhd-react)
 [![npm](https://img.shields.io/npm/dy/mhd-react.svg?style=flat-square)](https://www.npmjs.com/package/mhd-react)
 [![npm](https://img.shields.io/npm/dm/mhd-react.svg?style=flat-square)](https://www.npmjs.com/package/mhd-react)
@@ -17,3 +18,6 @@
 - [React组件生命周期](./demo/demo03-React生命周期/)
 - [React JSX语法](./demo/demo04-React_JSX/)
 - [React Mock数据](./demo/demo05-React_Mock/)
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_large)
