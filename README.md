@@ -21,6 +21,7 @@
 - [React （非）受控组件](./demo/demo06-React(非)受控组件/)
 - [React高阶组件](./demo/demo08-React高阶组件/)
 - [React事件系统简介](./demo/demo09-React事件系统/)
+- [React组件调和和key简介](./demo/demo10-React Reconciliation and Key/)
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_large)
