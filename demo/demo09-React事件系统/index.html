@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <a href="https://www.baidu.com" onclick="console.log('额...'); return false">
+		点我1
+	</a> -->
+	<div id="react-root"></div>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+    <script type="text/babel">
+        /* eslint-disable no-console*/
+		class EventTest extends React.Component {
+			constructor(props) {
+				super(props)
+				this.handleClick = this.handleClick.bind(this)
+				this.handleParentClick = this.handleParentClick.bind(this)
+			}
+
+			componentDidMount() {
+				this.button.addEventListener('click', function(e) {
+					// e.stopPropagation();
+					// e.preventDefault();
+					console.log(3)
+				})
+
+				this.parent.addEventListener('click', function(e) {
+					console.log(4)
+				})
+			}
+
+			handleClick(e) {
+				console.log(1)
+				e.stopPropagation()
+				// e.nativeEvent.stopPropagation();
+				// e.preventDefault();
+			}
+
+			handleParentClick(e) {
+				console.log(2)
+			}
+
+			render() {
+				return (
+					<div onClick={this.handleParentClick}
+						ref={(parent) => {this.parent = parent}}
+						style={{width: 300, height: 300, background: "red", textAlign: "center"}}
+						>
+						<button onClick={this.handleClick}
+							style={{width: 80, height: 30, background: "green"}}
+							ref={(button) => {this.button = button}}>点我</button>
+					</div>
+				)
+			}
+		}
+
+
+		function MyLink() {
+			function handleClick(e) {
+				e.preventDefault()
+				console.log('额...')
+			}
+
+			return (
+				<a href="https://www.baidu.com" onClick={handleClick}>
+					点我
+				</a>
+			)
+		}
+
+
+		class Binding extends React.Component {
+			constructor(props) {
+				super(props)
+				// This binding is necessary to make `this` work in the callback
+				// this.handleClick = this.handleClick.bind(this);
+			}
+
+			handleClick() {
+				// 绑定之后才能获取正确的this的值
+				console.log(this) // 不绑定则为null
+				console.log(123)
+			}
+
+			// componentDidMount() {
+			// 	this.handleClick();
+			// }
+
+			render() {
+				return (
+					<button onClick={this.handleClick}>
+						点我
+					</button>
+				)
+			}
+		}
+
+		class Binding1 extends React.Component {
+			handleClick() {
+				// 绑定之后才能获取正确的this的值
+				console.log(this)
+				console.log(123)
+			}
+
+			render() {
+				return (
+					<button onClick={this.handleClick.bind(this)}>
+						点我
+					</button>
+				)
+			}
+		}
+
+		class Binding2 extends React.Component {
+			handleClick() {
+				console.log(this)
+				console.log(123)
+			}
+
+			render() {
+				return (
+					<button onClick={(e) => this.handleClick(e)}>
+						点我
+					</button>
+				)
+			}
+		}
+
+		// let a = new Binding();
+		// console.log(a.handleClick());
+
+		class EventPooling extends React.Component {
+			constructor(props) {
+				super(props)
+				this.state = {}
+				this.onClick = this.onClick.bind(this)
+			}
+
+			onClick(event) {
+				// event.persist();
+				console.log(event) // => SyntheticEvent.
+				console.log(event.type) // => "click"
+				const eventType = event.type // => "click"
+
+				setTimeout(function() {
+					console.log(event.type) // => null
+					console.log(eventType) // => "click"
+				}, 0)
+
+				// Won't work. this.state.clickEvent will only contain null values.
+				this.setState({clickEvent: event})
+
+				// You can still export event properties.
+				this.setState({eventType: event.type})
+			}
+
+			render() {
+				console.log(this.state.clickEvent) // nullified object.(更新阶段完毕后)
+				console.log(this.state.eventType) // click (更新阶段完毕后)
+
+				return (
+					<button onClick={this.onClick}>
+						点我
+					</button>
+				)
+			}
+		}
+
+		ReactDOM.render(<EventPooling />, document.getElementById('react-root'))
+	</script>
+</body>
+</html>
