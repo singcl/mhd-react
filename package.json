@@ -4,6 +4,7 @@
   "description": "React 从入门到放弃！",
   "main": "index.js",
   "scripts": {
+    "jest": "jest",
     "test": "jest && codecov",
     "nginx": "node nginx-server.conf.js && cd nginx/ && start nginx",
     "stop": "cd nginx/ && nginx -s stop"
