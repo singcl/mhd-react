@@ -23,6 +23,7 @@
 - [React事件系统简介](./demo/demo09-React事件系统/)
 - [React组件调和与key简介](./demo/demo10-React调和与key/)
 - [React组件通讯](./demo/demo11-React组件间通讯/)
+- [React Immutable简介](./demo/demo12-React-Immutable/)
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_large)
