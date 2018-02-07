@@ -1,6 +1,6 @@
 {
   "name": "mhd-react",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "React 从入门到放弃！",
   "main": "index.js",
   "scripts": {
