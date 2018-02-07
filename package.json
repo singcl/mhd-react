@@ -1,6 +1,6 @@
 {
   "name": "mhd-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React 从入门到放弃！",
   "main": "index.js",
   "summary": "from singcl",
@@ -36,8 +36,8 @@
     "gulp-react": "^3.1.0",
     "jest": "^22.0.4"
   },
-    "engines": {
-        "node" :">=6.0.0 <10.0.0",
-        "npm" : "~2.0.0" 
-    }
+  "engines": {
+    "node": ">=6.0.0 <10.0.0",
+    "npm": "~2.0.0"
+  }
 }
