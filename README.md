@@ -24,6 +24,8 @@
 - [React组件调和与key简介](./demo/demo10-React调和与key/)
 - [React组件通讯](./demo/demo11-React组件间通讯/)
 - [React Immutable简介](./demo/demo12-React-Immutable/)
+- [React Fiber简介](./demo/demo13-React_Fiber/)
+- [React 16新特性简介](./demo/demo14-React16.x/)
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_large)
