@@ -22,7 +22,7 @@
     "stop": "cd nginx/ && nginx -s stop"
   },
   "keywords": [
-    "react",
+    "react"
   ],
   "license": "ISC",
   "devDependencies": {
