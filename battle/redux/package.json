@@ -4,7 +4,11 @@
   "description": "Redux管理React应用状态",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dll": "webpack --config ./webpack.dll.config.js",
+    "webpack": "webpack",
+    "server": "webpack-dev-server",
+    "build": "npm run dll && npm run webpack"
   },
   "keywords": [
     "Redux"
