@@ -58,6 +58,6 @@ nginx/conf/vhost/*.conf
 npm-debug.log
 
 #
-battle/**/manifest.js
+battle/**/manifest.json
 battle/**/lib.js
 battle/**/bundle.js
