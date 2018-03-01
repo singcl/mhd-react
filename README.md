@@ -26,6 +26,11 @@
 - [React Immutable简介](./demo/demo12-React-Immutable/)
 - [React Fiber简介](./demo/demo13-React_Fiber/)
 - [React 16新特性简介](./demo/demo14-React16.x/)
+### NGINX
+- **一键启动NGINX服务**: 利用nodejs配置nginx的conf实现**一键启动NGINX**和**NGINX反向代理**配置
+- 启动：`npm run nginx`
+- 访问：浏览器打开http://localhost:8017/index.html或者http://localhost:8016/index.html
+- 停止：`npm run stop`
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsingcl%2Fmhd-react?ref=badge_large)
