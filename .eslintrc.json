@@ -9,13 +9,16 @@
     "extends": "eslint:recommended",
     // "globals": {"React": true},
     "parserOptions": {
+        // https://segmentfault.com/a/1190000009819529
+        // 开启对es8（ecma2017）新特性支持
+        "ecmaVersion": 8,
         "ecmaFeatures": {
             "jsx": true
         },
         "sourceType": "module"
     },
     "plugins": [
-        "html"
+        "html",
     ],
     "rules": {
         "no-const-assign": "warn",
