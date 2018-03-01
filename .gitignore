@@ -56,3 +56,8 @@ nginx/logs/**/*
 !nginx/logs/*.txt
 nginx/conf/vhost/*.conf
 npm-debug.log
+
+#
+battle/**/manifest.js
+battle/**/lib.js
+battle/**/bundle.js

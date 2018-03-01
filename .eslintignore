@@ -2,5 +2,5 @@ demo/build
 demo/**/bundle.js
 demo/**/lib.js
 
-# 打包后的文件
-battle/**/bundle.js
+# React实例相关
+battle/**/public/**/*
