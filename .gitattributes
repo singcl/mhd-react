@@ -15,3 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# 手动修改项目语言识别配置
+*.vim linguist-language=javascript
+*.html linguist-language=html

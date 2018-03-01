@@ -6,11 +6,16 @@
         "node": true
     },
     // "extends": "airbnb-base",
-    "extends": "eslint:recommended",
+    // eslint-plugin-react插件如何引入：https://github.com/yannickcr/eslint-plugin-react
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     // "globals": {"React": true},
     "parserOptions": {
+        // http://eslint.cn/docs/user-guide/configuring#deprecated
+        // ecmaFeatures.experimentalObjectRestSpread - 启用对实验性的 object rest/spread properties 支持。该语法在 ecmaVersion: 2018(es9) 中得到支持。该选项在未来将被移除。
+        "ecmaVersion": 8,
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "experimentalObjectRestSpread":true
         },
         "sourceType": "module"
     },

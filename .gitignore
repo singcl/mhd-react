@@ -55,3 +55,9 @@ codecov_token.js
 nginx/logs/**/*
 !nginx/logs/*.txt
 nginx/conf/vhost/*.conf
+npm-debug.log
+
+#
+battle/**/manifest.json
+battle/**/lib.js
+battle/**/bundle.js

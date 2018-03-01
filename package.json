@@ -1,9 +1,22 @@
 {
   "name": "mhd-react",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "description": "React 从入门到放弃！",
   "main": "index.js",
+  "summary": "from singcl",
+  "author": {
+    "name": "singcl",
+    "url": "https://github.com/singcl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/singcl/mhd-react"
+  },
+  "bugs": {
+    "url": "https://github.com/singcl/mhd-react/issues"
+  },
   "scripts": {
+    "jest": "jest",
     "test": "jest && codecov",
     "nginx": "node nginx-server.conf.js && cd nginx/ && start nginx",
     "stop": "cd nginx/ && nginx -s stop"
@@ -11,7 +24,6 @@
   "keywords": [
     "react"
   ],
-  "author": "singcl",
   "license": "ISC",
   "devDependencies": {
     "codecov": "^3.0.0",
@@ -24,8 +36,8 @@
     "gulp-react": "^3.1.0",
     "jest": "^22.0.4"
   },
-    "engines": {
-        "node" :">=6.0.0 <10.0.0",
-        "npm" : "~2.0.0" 
-    }
+  "engines": {
+    "node": ">=6.0.0 <10.0.0",
+    "npm": "~2.0.0"
+  }
 }
