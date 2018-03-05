@@ -1,12 +1,8 @@
-const reducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return ++state
-        case 'DECREMENT':
-            return --state
-        default:
-            return state
-    }
-}
+import { combineReducers } from 'redux'
+import todos from './todos'
 
-export default reducer
+const todoApp = combineReducers({
+    todos
+})
+
+export default todoApp
