@@ -1,5 +1,10 @@
 import React from 'react'
-
-const App = () => <div>App</div>
+import Footer from './Footer'
+const App = () => (
+    <div>
+        <div>hehe</div>
+        <Footer />
+    </div>
+)
 
 export default App

@@ -7,14 +7,12 @@ import App from './components/App'
 import registerServiceWorker from './registerServiceWorker'
 
 const store = createStore(reducer)
-const rootEl = document.getElementById('root')
-
 const render = () =>
     ReactDOM.render(
         <Provider store={store}>
             <App />
         </Provider>,
-        rootEl
+        document.getElementById('root')
     )
 
 render()
