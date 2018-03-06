@@ -6,3 +6,8 @@ export const addTodo = text => ({
     id: nextTodoId++,
     text
 })
+
+export const toggleTodo = id => ({
+    type: 'TOGGLE_TODO',
+    id
+})
