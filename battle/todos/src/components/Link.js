@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types'
 
 const Link = ({ active, children, onClick }) => {
     if (active) {
+        // return React.Children.map(children, child => (<span>{child}</span>))
         return <span>{children}</span>
     }
 
@@ -15,6 +16,7 @@ const Link = ({ active, children, onClick }) => {
                 onClick()
             }}
         >
+            {/* {React.Children.map(children, child => child)} */}
             {children}
         </a>
     )
