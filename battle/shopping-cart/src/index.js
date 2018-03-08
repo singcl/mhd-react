@@ -1,22 +1,33 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
-import Counter from './components/Counter'
-import counter from './reducers'
+import ReactDOM from 'react-dom'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import { createLogger } from 'redux-logger'
+import thunk from 'redux-thunk'
+import reducer from './reducers'
+import { getAllProducts } from './actions'
+import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
 
-const store = createStore(counter)
+const middleware = [thunk]
+if (process.env.NODE_ENV !== 'production') {
+    middleware.push(createLogger())
+}
+
+const store = createStore(reducer, applyMiddleware(...middleware))
+store.dispatch(getAllProducts())
 const rootEl = document.getElementById('root')
 
-const render = () => ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />, 
-    rootEl
-)
+const render = () =>
+    ReactDOM.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        rootEl
+    )
 
 render()
-store.subscribe(render)
+store.subscribe(() => {
+    console.log(store.getState())
+})
 registerServiceWorker()
