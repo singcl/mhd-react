@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductsContainer from './ProductsContainer'
 
 const App = () => (
     <div>
         <h2>SHOP</h2>
-        <div>Hello</div>
+        <ProductsContainer />
     </div>
 )
 
