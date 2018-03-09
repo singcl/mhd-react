@@ -28,6 +28,12 @@ const render = () =>
 
 render()
 store.subscribe(() => {
-    console.log(store.getState())
+    console.group('Store State')
+    console.log(
+        '%cstate:',
+        'color: #fff;background-image: linear-gradient(to right, red, blue)',
+        store.getState()
+    )
+    console.groupEnd()
 })
 registerServiceWorker()
