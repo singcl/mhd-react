@@ -32,4 +32,4 @@ export default connect(
     mapStateToProps
     // mapDispatchToProps 两种表示法中的对象表示法
     // 异步action creator
-)
+)(ProductsContainer)

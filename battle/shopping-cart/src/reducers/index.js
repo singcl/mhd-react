@@ -1,12 +1,6 @@
-const reducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return ++state
-        case 'DECREMENT':
-            return --state
-        default:
-            return state
-    }
-}
+import { combineReducers } from 'redux'
+import products from './products'
 
-export default reducer
+export default combineReducers({
+    products
+})

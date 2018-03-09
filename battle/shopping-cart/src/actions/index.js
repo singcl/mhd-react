@@ -6,6 +6,7 @@ const receiveProducts = products => ({
     products
 })
 
+// 异步Action Creator
 export const getAllProducts = () => dispatch => {
     shop.getProducts(products => {
         dispatch(receiveProducts(products))
