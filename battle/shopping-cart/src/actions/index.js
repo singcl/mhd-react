@@ -12,3 +12,15 @@ export const getAllProducts = () => dispatch => {
         dispatch(receiveProducts(products))
     })
 }
+
+const addToCartUnsafe = productId => ({
+    type: types.ADD_TO_CARD,
+    productId
+})
+
+// 返回函数的Action Creator：redux-thunk中间件的作用
+export const addToCart = productId => (dispatch, getState) => {
+    if (getState().products.byId[productId].inventory > 0) {
+        dispatch(addToCartUnsafe(productId))
+    }
+}

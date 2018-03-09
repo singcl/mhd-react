@@ -4,11 +4,16 @@ import PropTypes from 'prop-types'
 import ProductsList from '../components/ProductsList'
 import ProductItem from '../components/ProductItem'
 import { getVisibleProducts } from '../reducers/products'
+import { addToCart } from '../actions'
 
-const ProductsContainer = ({ products }) => (
+const ProductsContainer = ({ products, addToCart }) => (
     <ProductsList title="Products">
         {products.map(product => (
-            <ProductItem key={product.id} product={product} />
+            <ProductItem
+                key={product.id}
+                product={product}
+                onAddToCartClicked={() => addToCart(product.id)}
+            />
         ))}
     </ProductsList>
 )
@@ -29,7 +34,8 @@ const mapStateToProps = state => ({
 })
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
     // mapDispatchToProps 两种表示法中的对象表示法
     // 异步action creator
+    { addToCart }
 )(ProductsContainer)
