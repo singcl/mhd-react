@@ -5,6 +5,7 @@ import ProductsList from '../components/ProductsList'
 import ProductItem from '../components/ProductItem'
 import { getVisibleProducts } from '../reducers/products'
 import { addToCart } from '../actions'
+// import { bindActionCreators} from 'redux'
 
 const ProductsContainer = ({ products, addToCart }) => (
     <ProductsList title="Products">
@@ -35,7 +36,12 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    // mapDispatchToProps 两种表示法中的对象表示法
+    // mapDispatchToProps 两种表示法中的对象表示法 // react-redux 内部会包装成函数的写法
     // 异步action creator
     { addToCart }
+
+    // 方法二: mapDispatchToProps 两种表示法中的函数表示法
+    // (dispatch) => ({
+    //     ...bindActionCreators({ addToCart }, dispatch)
+    // })
 )(ProductsContainer)
