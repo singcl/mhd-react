@@ -6,5 +6,11 @@
         "title": "Charli XCX - Sucker CD",
         "price": 19.99,
         "inventory": 5
+    },
+    {
+        "id": 4,
+        "title": "ChangHong - MianYang",
+        "price": 1999.99,
+        "inventory": 21
     }
 ]
