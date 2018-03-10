@@ -9,6 +9,14 @@ import { getAllProducts } from './actions'
 import App from './containers/App'
 import registerServiceWorker from './registerServiceWorker'
 
+/*
+// 自实现的一个简单的thunk中间件 
+const thunk = store => next => action =>
+  typeof action === 'function' ?
+    action(store.dispatch, store.getState) :
+    next(action) 
+*/
+
 const middleware = [thunk]
 if (process.env.NODE_ENV !== 'production') {
     middleware.push(createLogger())
