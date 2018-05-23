@@ -1,5 +1,5 @@
-import React from 'react'
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
+import React from 'react';
 
 const Link = ({ active, children, onClick }) => {
     if (active) {
@@ -22,7 +22,7 @@ const Link = ({ active, children, onClick }) => {
     )
 }
 
-Link.PropTypes = {
+Link.propTypes = {
     active: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired
