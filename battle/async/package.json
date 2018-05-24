@@ -1,7 +1,8 @@
 {
-  "name": "shopping-cart",
+  "name": "redux-async",
   "version": "0.1.0",
   "private": true,
+  "description": "异步aciton示例",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
