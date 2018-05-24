@@ -15,13 +15,11 @@
         "ecmaVersion": 8,
         "ecmaFeatures": {
             "jsx": true,
-            "experimentalObjectRestSpread":true
+            "experimentalObjectRestSpread": true
         },
         "sourceType": "module"
     },
-    "plugins": [
-        "html"
-    ],
+    "plugins": ["html"],
     "rules": {
         "no-const-assign": "warn",
         "no-this-before-super": "warn",
@@ -30,9 +28,9 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        "linebreak-style":"off",
-        "eol-last":"error",
-        "no-trailing-spaces":"error",
-        "semi":["error", "never"]
+        "linebreak-style": "off",
+        "eol-last": "error",
+        "no-trailing-spaces": "error",
+        "semi": ["error", "never"]
     }
 }
