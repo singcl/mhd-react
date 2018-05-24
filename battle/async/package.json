@@ -34,7 +34,7 @@
     },
     "lint-staged": {
         "src/**/*.{js,jsx,json,css}": [
-            "prettier --write --arrow-parens always",
+            "prettier --arrow-parens always --write",
             "git add"
         ]
     },
