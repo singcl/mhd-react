@@ -33,10 +33,7 @@
         "precommit": "lint-staged"
     },
     "lint-staged": {
-        "src/**/*.{js,jsx,json,css}": [
-            "prettier --arrow-parens always --write",
-            "git add"
-        ]
+        "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
     },
     "prettier": {
         "singleQuote": true,
