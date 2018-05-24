@@ -10,7 +10,7 @@ class App extends React.Component {
         dispatch(fetchPostsIfNeeded(selectedSubreddit))
     }
 
-    handleChange = nextSubreddit => {
+    handleChange = (nextSubreddit) => {
         this.props.dispatch(selectSubreddit(nextSubreddit))
     }
 
@@ -63,7 +63,7 @@ App.propTypes = {
     lastUpdated: PropTypes.number
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     const { selectedSubreddit, postsBySubreddit } = state
     const { isFetching, lastUpdated, items: posts } = postsBySubreddit[
         selectedSubreddit
