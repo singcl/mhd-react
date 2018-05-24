@@ -1,2 +1,4 @@
 {
+    // extension js-beautify confict with prettier in vscode 1.23.x
+    // so you can disable the js-beautify extension to enable prettier extension.
 }
