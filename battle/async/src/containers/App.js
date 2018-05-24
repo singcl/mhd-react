@@ -3,11 +3,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPostsIfNeeded, selectSubreddit } from '../actions'
 import Picker from '../components/Picker'
+import Posts from '../components/Posts'
 
 class App extends React.Component {
     componentDidMount() {
         const { dispatch, selectedSubreddit } = this.props
         dispatch(fetchPostsIfNeeded(selectedSubreddit))
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
+            const { dispatch, selectedSubreddit } = nextProps
+            dispatch(fetchPostsIfNeeded(selectedSubreddit))
+        }
     }
 
     handleChange = (nextSubreddit) => {
@@ -48,7 +56,9 @@ class App extends React.Component {
                         <h2>Empty.</h2>
                     )
                 ) : (
-                    <div style={{ opacity: isFetching ? 0.5 : 1 }}>有数据</div>
+                    <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+                        <Posts posts={posts} />
+                    </div>
                 )}
             </div>
         )
