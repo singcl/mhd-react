@@ -8,6 +8,11 @@ export const selectSubreddit = (subreddit) => ({
     subreddit
 })
 
+export const invalidateSubreddit = (subreddit) => ({
+    type: INVALIDATE_SUBREDDIT,
+    subreddit
+})
+
 const shouldFetchPosts = (state, subreddit) => {
     const posts = state.postsBySubreddit[subreddit]
     if (!posts) {

@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchPostsIfNeeded, selectSubreddit } from '../actions'
+import {
+    fetchPostsIfNeeded,
+    invalidateSubreddit,
+    selectSubreddit
+} from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 
@@ -20,6 +24,13 @@ class App extends React.Component {
 
     handleChange = (nextSubreddit) => {
         this.props.dispatch(selectSubreddit(nextSubreddit))
+    }
+
+    handleChangeRefreshClick = (e) => {
+        e.preventDefault()
+        const { dispatch, selectedSubreddit } = this.props
+        dispatch(invalidateSubreddit(selectedSubreddit))
+        dispatch(fetchPostsIfNeeded(selectedSubreddit))
     }
 
     render() {
