@@ -1,41 +1,45 @@
-import shop from '../api/shop'
-import * as types from '../constants/ActionTypes'
+export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
+export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
-const receiveProducts = products => ({
-    type: types.RECEIVE_PRODUCTS,
-    products
+export const selectSubreddit = subreddit => ({
+    type: SELECT_SUBREDDIT,
+    subreddit
 })
 
-// 异步Action Creator
-export const getAllProducts = () => dispatch => {
-    shop.getProducts(products => {
-        dispatch(receiveProducts(products))
-    })
-}
-
-const addToCartUnsafe = productId => ({
-    type: types.ADD_TO_CARD,
-    productId
-})
-
-// 返回函数的Action Creator：redux-thunk中间件的作用
-export const addToCart = productId => (dispatch, getState) => {
-    if (getState().products.byId[productId].inventory > 0) {
-        dispatch(addToCartUnsafe(productId))
+const shouldFetchPosts = (state, subreddit) => {
+    const posts = state.postsBySubreddit[subreddit]
+    if (!posts) {
+        return true
     }
+    if (posts.isFetching) {
+        return false
+    }
+    return posts.didInvalidate
 }
 
-export const checkout = products => (dispatch, getState) => {
-    const { cart } = getState()
-    dispatch({
-        type: types.CHECKOUT_REQUEST
-    })
-    shop.buyProducts(products, () => {
-        dispatch({
-            type: types.CHECKOUT_SUCCESS,
-            cart
-        })
-        // Replace the line above with line below to rollback on failure:
-        // dispatch({ type: types.CHECKOUT_FAILURE, cart })
-    })
+const requestPosts = subreddit => ({
+    type: REQUEST_POSTS,
+    subreddit
+})
+
+const receivePosts = (subreddit, json) => ({
+    type: RECEIVE_POSTS,
+    subreddit,
+    posts: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
+})
+
+const fetchPosts = subreddit => dispatch => {
+    dispatch(requestPosts(subreddit))
+    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+        .then(response => response.json())
+        .then(json => dispatch(receivePosts(subreddit, json)))
+}
+
+export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
+    if (shouldFetchPosts(getState(), subreddit)) {
+        return dispatch(fetchPosts(subreddit))
+    }
 }

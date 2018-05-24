@@ -1,5 +1,26 @@
+import PropTypes from 'prop-types'
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchPostsIfNeeded } from '../actions'
 
-const App = () => <div>Async</div>
+class App extends React.Component {
+    componentDidMount() {
+        const { dispatch, selectedSubreddit } = this.props
+        dispatch(fetchPostsIfNeeded(selectedSubreddit))
+    }
 
-export default App
+    render() {
+        return <div>Async App</div>
+    }
+}
+
+App.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    selectedSubreddit: PropTypes.string.isRequired
+}
+
+const mapStateToProps = state => ({
+    selectedSubreddit: state.selectedSubreddit
+})
+
+export default connect(mapStateToProps)(App)
