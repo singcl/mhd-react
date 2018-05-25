@@ -11,7 +11,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "redux-undo": "^0.6.1"
+    "redux-undo": "^0.6.1",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "husky": "^0.14.3",
