@@ -1,8 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore } from 'redux'
+import { createLogger } from 'redux-logger'
+import App from './components/App.jsx'
+import './index.css'
+import reducer from './reducers'
+import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const middleware = []
+
+if (process.env.NODE_ENV !== 'production') {
+    middleware.push(createLogger())
+}
+
+const store = createStore(reducer, applyMiddleware(...middleware))
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+)
+
+registerServiceWorker()
