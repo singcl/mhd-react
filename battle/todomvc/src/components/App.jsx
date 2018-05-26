@@ -1,15 +1,11 @@
 import React from 'react'
-import Footer from '../components/Footer.jsx'
-import AddTodo from '../containers/AddTodo.jsx'
-import UndoRedo from '../containers/UndoRedo.jsx'
-import VisibleTodoList from '../containers/VisibleTodoList.jsx'
+import Header from '../containers/Header.jsx'
+import MainSection from '../containers/MainSection.jsx'
 
 const App = () => (
     <div>
-        <AddTodo />
-        <VisibleTodoList />
-        <Footer />
-        <UndoRedo />
+        <Header />
+        <MainSection />
     </div>
 )
 

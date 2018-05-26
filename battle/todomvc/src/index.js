@@ -5,7 +5,7 @@ import { applyMiddleware, createStore } from 'redux'
 import { createLogger } from 'redux-logger'
 import 'todomvc-app-css/index.css'
 import App from './components/App.jsx'
-import './index.css'
+// import './index.css'
 import reducer from './reducers'
 import registerServiceWorker from './registerServiceWorker'
 

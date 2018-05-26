@@ -1,9 +1,7 @@
-const uuidV4 = require('uuid/v4')
-// let nextTodoId = 0
+import * as types from '../constants/ActionTypes'
 
 export const addTodo = (text) => ({
-    type: 'ADD_TODO',
-    id: uuidV4(),
+    type: types.ADD_TODO,
     text
 })
 

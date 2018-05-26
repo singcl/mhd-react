@@ -1,39 +1,29 @@
-import undoable, { includeAction } from 'redux-undo'
+import { ADD_TODO } from '../constants/ActionTypes'
 
-const todo = (state, action) => {
+const initialState = [
+    {
+        text: 'Use Redux',
+        completed: false,
+        id: 0
+    }
+]
+
+export default function todos(state = initialState, action) {
     switch (action.type) {
-        case 'ADD_TODO':
-            return {
-                id: action.id,
-                text: action.text,
-                completed: false
-            }
-        case 'TOGGLE_TODO':
-            if (state.id !== action.id) {
-                return state
-            }
-            return {
+        case ADD_TODO:
+            return [
                 ...state,
-                completed: !state.completed
-            }
+                {
+                    text: action.text,
+                    completed: false,
+                    id:
+                        state.reduce(
+                            (maxId, todo) => Math.max(maxId, todo.id),
+                            -1
+                        ) + 1
+                }
+            ]
         default:
             return state
     }
 }
-
-const todos = (state = [], action) => {
-    switch (action.type) {
-        case 'ADD_TODO':
-            return [...state, todo(undefined, action)]
-        case 'TOGGLE_TODO':
-            return state.map((t) => todo(t, action))
-        default:
-            return state
-    }
-}
-
-const undoableTodos = undoable(todos, {
-    filter: includeAction(['ADD_TODO', 'TOGGLE_TODO'])
-})
-
-export default undoableTodos
