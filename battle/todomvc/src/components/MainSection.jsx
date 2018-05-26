@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import VisibilityTodos from '../containers/VisibilityTodos.jsx'
+import Footer from './Footer.jsx'
 
 const MainSection = ({ todosCount, completedCount }) => (
     <section className="main">
@@ -16,6 +17,13 @@ const MainSection = ({ todosCount, completedCount }) => (
         )}
 
         <VisibilityTodos />
+
+        {!!todosCount && (
+            <Footer
+                completedCount={completedCount}
+                activeCount={todosCount - completedCount}
+            />
+        )}
     </section>
 )
 
