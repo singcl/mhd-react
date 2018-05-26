@@ -3,7 +3,7 @@ import React from 'react'
 import VisibilityTodos from '../containers/VisibilityTodos.jsx'
 import Footer from './Footer.jsx'
 
-const MainSection = ({ todosCount, completedCount }) => (
+const MainSection = ({ todosCount, completedCount, actions }) => (
     <section className="main">
         {!!todosCount && (
             <span>
@@ -12,7 +12,7 @@ const MainSection = ({ todosCount, completedCount }) => (
                     className="toggle-all"
                     checked={completedCount === todosCount}
                 />
-                <label htmlFor="" />
+                <label onClick={actions.completeAllTodos} />
             </span>
         )}
 
@@ -22,12 +22,14 @@ const MainSection = ({ todosCount, completedCount }) => (
             <Footer
                 completedCount={completedCount}
                 activeCount={todosCount - completedCount}
+                onClearCompleted={actions.clearCompleted}
             />
         )}
     </section>
 )
 
 MainSection.propTypes = {
+    actions: PropTypes.object.isRequired,
     completedCount: PropTypes.number.isRequired,
     todosCount: PropTypes.number.isRequired
 }

@@ -1,4 +1,6 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as TodoActions from '../actions'
 import MainSection from '../components/MainSection.jsx'
 import { getCompletedTodoCount } from '../selectors'
 
@@ -7,4 +9,8 @@ const mapStateToProps = (state) => ({
     completedCount: getCompletedTodoCount(state)
 })
 
-export default connect(mapStateToProps)(MainSection)
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(TodoActions, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainSection)

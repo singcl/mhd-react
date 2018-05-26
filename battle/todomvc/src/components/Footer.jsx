@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { SHOW_ACTIVE, SHOW_ALL, SHOW_COMPLETED } from '../constants/TodoFilters'
+import FilterLink from '../containers/FilterLink.jsx'
 
 const FILTER_TITLES = {
     [SHOW_ALL]: 'All',
@@ -9,7 +10,7 @@ const FILTER_TITLES = {
 }
 
 const Footer = (props) => {
-    const { activeCount, completedCount } = props
+    const { activeCount, completedCount, onClearCompleted } = props
     const itemWord = activeCount === 1 ? 'item' : 'items'
     return (
         <footer className="footer">
@@ -20,12 +21,18 @@ const Footer = (props) => {
 
             <ul className="filters">
                 {Object.keys(FILTER_TITLES).map((filter) => (
-                    <li key={filter}>{FILTER_TITLES[filter]}</li>
+                    <li key={filter}>
+                        <FilterLink filter={filter}>
+                            {FILTER_TITLES[filter]}
+                        </FilterLink>
+                    </li>
                 ))}
             </ul>
 
             {!!completedCount && (
-                <button className="clear-completed">Clear completed</button>
+                <button className="clear-completed" onClick={onClearCompleted}>
+                    Clear completed
+                </button>
             )}
         </footer>
     )
@@ -33,7 +40,8 @@ const Footer = (props) => {
 
 Footer.propTypes = {
     activeCount: PropTypes.number.isRequired,
-    completedCount: PropTypes.number.isRequired
+    completedCount: PropTypes.number.isRequired,
+    onClearCompleted: PropTypes.func.isRequired
 }
 
 export default Footer
