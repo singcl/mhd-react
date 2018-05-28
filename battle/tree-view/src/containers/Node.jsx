@@ -9,6 +9,22 @@ class Node extends React.Component {
         increment(id)
     }
 
+    handleRemoveClick = (e) => {
+        e.preventDefault()
+
+        const { removeChild, deleteNode, parentId, id } = this.props
+        removeChild(parentId, id)
+        deleteNode(id)
+    }
+
+    handleAddChildClick = (e) => {
+        e.preventDefault()
+
+        const { addChild, createNode, id } = this.props
+        const childId = createNode().nodeId
+        addChild(id, childId)
+    }
+
     renderChild = (childId) => {
         const { id } = this.props
         return (
@@ -24,7 +40,7 @@ class Node extends React.Component {
             <div>
                 Counter: {counter}{' '}
                 <button onClick={this.handleIncrementClick}>+</button>{' '}
-                {typeof parentId !== undefined && (
+                {typeof parentId !== 'undefined' && (
                     <a // eslint-disable-line jsx-a11y/href-no-hash
                         href="#"
                         onClick={this.handleRemoveClick}
@@ -34,6 +50,7 @@ class Node extends React.Component {
                     </a>
                 )}
                 <ul>
+                    {/* 当childIds为空数组的时候返回也是空数组从而递归停止 */}
                     {childIds.map(this.renderChild)}
                     <li key="add">
                         <a // eslint-disable-line jsx-a11y/href-no-hash
@@ -50,11 +67,17 @@ class Node extends React.Component {
 }
 
 Node.propTypes = {
-    childIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+    addChild: PropTypes.func.isRequired,
+    childIds: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    ).isRequired,
     counter: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
+    createNode: PropTypes.func.isRequired,
+    deleteNode: PropTypes.func.isRequired,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     increment: PropTypes.func.isRequired,
-    parentId: PropTypes.number
+    parentId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    removeChild: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state, ownProps) {
