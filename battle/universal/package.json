@@ -1,0 +1,66 @@
+{
+    "name": "universal",
+    "version": "0.1.1",
+    "private": true,
+    "description": "React and Redux Server Render",
+    "dependencies": {
+        "babel-polyfill": "^6.26.0",
+        "babel-register": "^6.26.0",
+        "express": "^4.16.3",
+        "nodemon": "^1.17.5",
+        "prop-types": "^15.6.1",
+        "qs": "^6.5.2",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-redux": "^5.0.7",
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-react-hmre": "^1.1.1",
+        "babel-runtime": "^6.26.0",
+        "eslint": "^4.19.1",
+        "eslint-config-react-app": "^2.1.0",
+        "eslint-plugin-flowtype": "^2.47.1",
+        "eslint-plugin-import": "^2.12.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.8.2",
+        "husky": "^0.14.3",
+        "lint-staged": "^7.0.0",
+        "node-sass-chokidar": "^0.0.3",
+        "npm-run-all": "^4.1.2",
+        "prettier": "^1.11.1",
+        "redux-logger": "^3.0.6",
+        "webpack": "^4.9.1",
+        "webpack-dev-middleware": "^3.1.3",
+        "webpack-hot-middleware": "^2.22.2"
+    },
+    "scripts": {
+        "start2": "nodemon server/index.js",
+        "build2": "webpack",
+        "build-css": "node-sass-chokidar src/ -o src/",
+        "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+        "start-js": "react-scripts start",
+        "start": "npm-run-all -p watch-css start-js",
+        "build-js": "react-scripts build",
+        "build": "npm-run-all build-css build-js",
+        "test": "react-scripts test --env=jsdom",
+        "precommit": "lint-staged"
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,json,css}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "prettier": {
+        "singleQuote": true,
+        "semi": false,
+        "arrowParens": "always"
+    }
+}
