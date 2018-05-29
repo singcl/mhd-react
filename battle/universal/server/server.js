@@ -55,10 +55,7 @@ const handleRender = (req, res) => {
 
         res.render('index', {
             html,
-            preloadedState: JSON.stringify(preloadedState).replace(
-                /</g,
-                '\\x3c'
-            )
+            preloadedState: JSON.stringify(finalState).replace(/</g, '\\x3c')
         })
     })
 }
