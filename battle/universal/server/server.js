@@ -11,6 +11,8 @@ import App from '../common/containers/App.jsx'
 import configureStore from '../common/store/configureStore'
 import webpackConfig from '../webpack.config'
 
+// https://github.com/gajus/react-css-modules/issues/83
+
 const app = new Express()
 const port = 3050
 

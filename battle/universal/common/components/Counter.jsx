@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import './Counter.scss'
+// import './Counter.scss'
 
 const Counter = ({
     increment,
