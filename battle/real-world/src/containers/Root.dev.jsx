@@ -1,12 +1,14 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Provider } from 'react-redux'
-import PropTypes from 'prop-types'
+import { Route } from 'react-router-dom'
+import App from './App.jsx'
 import DevTools from './DevTools.jsx'
 
 const Root = ({ store }) => (
     <Provider store={store}>
         <div>
-            <div>DEV_ROOT</div>
+            <Route path="/" component={App} />
             <DevTools />
         </div>
     </Provider>
