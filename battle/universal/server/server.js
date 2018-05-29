@@ -51,36 +51,37 @@ const handleRender = (req, res) => {
 
         const finalState = store.getState()
 
-        // res.send(renderFullPage(html, finalState))
+        res.send(renderFullPage(html, finalState))
 
-        res.render('index', {
-            html,
-            preloadedState: JSON.stringify(finalState).replace(/</g, '\\x3c')
-        })
+        // 不知道为什么用jade模板的方法 前端显示的时候明显效果不如 上面res.send的方式？？？？？
+        // res.render('index', {
+        //     html,
+        //     preloadedState: JSON.stringify(finalState).replace(/</g, '\\x3c')
+        // })
     })
 }
 
 app.get('/', handleRender)
 
-// const renderFullPage = (html, preloadedState) => {
-//     return `
-//         <!doctype html>
-//         <html>
-//         <head>
-//             <title>Redux Universal Example</title>
-//         </head>
-//         <body>
-//             <div id="app">${html}</div>
-//             <script>
-//             window.__PRELOADED_STATE__ = ${JSON.stringify(
-//                 preloadedState
-//             ).replace(/</g, '\\x3c')}
-//             </script>
-//             <script src="/static/bundle.js"></script>
-//         </body>
-//         </html>
-//     `
-// }
+const renderFullPage = (html, preloadedState) => {
+    return `
+        <!doctype html>
+        <html>
+        <head>
+            <title>Redux Universal Example</title>
+        </head>
+        <body>
+            <div id="app">${html}</div>
+            <script>
+            window.__PRELOADED_STATE__ = ${JSON.stringify(
+                preloadedState
+            ).replace(/</g, '\\x3c')}
+            </script>
+            <script src="/static/bundle.js"></script>
+        </body>
+        </html>
+    `
+}
 
 const port = app.get('port')
 app.listen(port, (error) => {
