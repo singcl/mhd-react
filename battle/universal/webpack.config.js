@@ -21,6 +21,10 @@ module.exports = {
                 options: {
                     presets: ['react-hmre']
                 }
+            },
+            {
+                test: /\.s?css$/,
+                loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     }
