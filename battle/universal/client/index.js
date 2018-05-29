@@ -12,7 +12,7 @@ const store = configureStore(preloadedState)
 
 // react-dom.development.js:9873 Warning: render(): Calling ReactDOM.render() to hydrate server-rendered markup will stop working in React v17.
 // Replace the ReactDOM.render() call with ReactDOM.hydrate() if you want React to attach to the server HTML.
-ReactDOM.hydrate(
+ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,

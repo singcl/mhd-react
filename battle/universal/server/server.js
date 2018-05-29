@@ -1,4 +1,5 @@
 import Express from 'express'
+import path from 'path'
 import qs from 'qs'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -14,7 +15,16 @@ import webpackConfig from '../webpack.config'
 // https://github.com/gajus/react-css-modules/issues/83
 
 const app = new Express()
-const port = 3050
+
+// 配置一些常用变量
+app.set('port', process.env.PORT || '3050') // 服务器启动端口
+app.set('views', path.join(__dirname, 'views')) // 将path片段拼成规范的路径 - 放模板文件的目录
+// 指定模板引擎
+// 在没有显示调用app.engine()的情况下,express 内部会默认调用 app.engine('jade', require('jade').__express);
+// 调用render函数时，自动添加jade后缀
+// By default, Express will require() the engine based on the file extension.
+// @see http://www.expressjs.com.cn/4x/api.html
+app.set('view engine', 'jade')
 
 const compiler = webpack(webpackConfig)
 app.use(
@@ -40,32 +50,42 @@ const handleRender = (req, res) => {
         )
 
         const finalState = store.getState()
-        res.send(renderFullPage(html, finalState))
+
+        // res.send(renderFullPage(html, finalState))
+
+        res.render('index', {
+            html,
+            preloadedState: JSON.stringify(preloadedState).replace(
+                /</g,
+                '\\x3c'
+            )
+        })
     })
 }
 
 app.get('/', handleRender)
 
-const renderFullPage = (html, preloadedState) => {
-    return `
-        <!doctype html>
-        <html>
-        <head>
-            <title>Redux Universal Example</title>
-        </head>
-        <body>
-            <div id="app">${html}</div>
-            <script>
-            window.__PRELOADED_STATE__ = ${JSON.stringify(
-                preloadedState
-            ).replace(/</g, '\\x3c')}
-            </script>
-            <script src="/static/bundle.js"></script>
-        </body>
-        </html>
-    `
-}
+// const renderFullPage = (html, preloadedState) => {
+//     return `
+//         <!doctype html>
+//         <html>
+//         <head>
+//             <title>Redux Universal Example</title>
+//         </head>
+//         <body>
+//             <div id="app">${html}</div>
+//             <script>
+//             window.__PRELOADED_STATE__ = ${JSON.stringify(
+//                 preloadedState
+//             ).replace(/</g, '\\x3c')}
+//             </script>
+//             <script src="/static/bundle.js"></script>
+//         </body>
+//         </html>
+//     `
+// }
 
+const port = app.get('port')
 app.listen(port, (error) => {
     if (error) {
         console.error(error)

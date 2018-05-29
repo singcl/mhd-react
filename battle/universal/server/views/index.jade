@@ -1,0 +1,11 @@
+doctype html
+html(lang="en")
+    head
+        title="Redux Universal Example"
+    body
+        div(id="app") #{html}
+
+        script(type='text/javascript').
+            window.__PRELOADED_STATE__ = !{preloadedState}
+
+        script(src='/static/bundle.js')
