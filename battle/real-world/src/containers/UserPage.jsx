@@ -21,11 +21,22 @@ class UserPage extends React.Component {
         user: PropTypes.object,
         starredPagination: PropTypes.object,
         starredRepos: PropTypes.array.isRequired,
-        starredRepoOwners: PropTypes.array.isRequired
+        starredRepoOwners: PropTypes.array.isRequired,
+        loadStarred: PropTypes.func.isRequired
     }
 
     componentWillMount() {
         loadData(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.login !== this.props.login) {
+            loadData(nextProps)
+        }
+    }
+
+    handleLoadMoreClick = () => {
+        this.props.loadStarred(this.props.login, true)
     }
 
     renderRepo([repo, owner]) {
@@ -56,7 +67,8 @@ class UserPage extends React.Component {
                 <List
                     renderItem={this.renderRepo}
                     items={zip(starredRepos, starredRepoOwners)}
-                    /* onLoadMoreClick={this.handleLoadMoreClick} */
+                    onLoadMoreClick={this.handleLoadMoreClick}
+                    loadingLabel={`Loading ${login}'s starred...`}
                     {...starredPagination}
                 />
             </div>

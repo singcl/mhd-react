@@ -8,7 +8,27 @@ class List extends React.Component {
         nextPageUrl: PropTypes.string,
         pageCount: PropTypes.number,
         items: PropTypes.array.isRequired,
-        renderItem: PropTypes.func.isRequired
+        renderItem: PropTypes.func.isRequired,
+        onLoadMoreClick: PropTypes.func.isRequired,
+        loadingLabel: PropTypes.string.isRequired
+    }
+
+    static defaultProps = {
+        isFetching: true,
+        loadingLabel: 'Loading...'
+    }
+
+    renderLoadMore() {
+        const { isFetching, onLoadMoreClick } = this.props
+        return (
+            <button
+                style={{ fontSize: '150%' }}
+                onClick={onLoadMoreClick}
+                disabled={isFetching}
+            >
+                {isFetching ? 'Loading...' : 'Load More'}
+            </button>
+        )
     }
 
     render() {
@@ -17,14 +37,15 @@ class List extends React.Component {
             nextPageUrl,
             pageCount,
             items,
-            renderItem
+            renderItem,
+            loadingLabel
         } = this.props
 
         const isEmpty = items.length === 0
         if (isEmpty && isFetching) {
             return (
                 <h2>
-                    <i>Loading...</i>
+                    <i>{loadingLabel}</i>
                 </h2>
             )
         }
@@ -41,7 +62,7 @@ class List extends React.Component {
         return (
             <div>
                 {items.map(renderItem)}
-                {/* {pageCount > 0 && } */}
+                {pageCount > 0 && !isLastPage && this.renderLoadMore()}
             </div>
         )
     }
