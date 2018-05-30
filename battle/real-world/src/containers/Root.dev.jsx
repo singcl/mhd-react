@@ -4,11 +4,13 @@ import { Provider } from 'react-redux'
 import { Route } from 'react-router-dom'
 import App from './App.jsx'
 import DevTools from './DevTools.jsx'
+import UserPage from './UserPage.jsx'
 
 const Root = ({ store }) => (
     <Provider store={store}>
         <div>
             <Route path="/" component={App} />
+            <Route path="/:login" component={UserPage} />
             <DevTools />
         </div>
     </Provider>
