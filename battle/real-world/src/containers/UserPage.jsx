@@ -1,24 +1,36 @@
+import zip from 'lodash/zip'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { loadStarred, loadUser } from '../actions'
+import List from '../components/List.jsx'
+import Repo from '../components/Repo.jsx'
+import User from '../components/User.jsx'
 
 const loadData = ({ login, loadUser, loadStarred }) => {
     loadUser(login, ['name'])
     loadStarred(login)
 }
 
+/* eslint-disable react/sort-prop-types */
+
 class UserPage extends React.Component {
     static propTypes = {
         login: PropTypes.string.isRequired,
-        user: PropTypes.object
+        user: PropTypes.object,
+        starredPagination: PropTypes.object,
+        starredRepos: PropTypes.array.isRequired,
+        starredRepoOwners: PropTypes.array.isRequired
     }
 
     componentWillMount() {
         loadData(this.props)
     }
 
+    renderRepo([repo, owner]) {
+        return <Repo repo={repo} owner={owner} key={repo.fullName} />
+    }
     render() {
         const { user, login } = this.props
         if (!user) {
@@ -31,7 +43,24 @@ class UserPage extends React.Component {
                 </h1>
             )
         }
-        return <div>{this.props.login}</div>
+        const {
+            starredRepos,
+            starredRepoOwners,
+            starredPagination
+        } = this.props
+
+        return (
+            <div>
+                <User user={user} />
+                <hr />
+                <List
+                    renderItem={this.renderRepo}
+                    items={zip(starredRepos, starredRepoOwners)}
+                    /* onLoadMoreClick={this.handleLoadMoreClick} */
+                    {...starredPagination}
+                />
+            </div>
+        )
     }
 }
 
@@ -45,9 +74,16 @@ const mapStateToProps = (state, ownProps) => {
         entities: { users, repos }
     } = state
 
+    const starredPagination = starredByUser[login] || { ids: [] }
+    const starredRepos = starredPagination.ids.map((id) => repos[id])
+    const starredRepoOwners = starredRepos.map((repo) => users[repo.owner])
+
     return {
         login,
-        user: users[login]
+        user: users[login],
+        starredPagination,
+        starredRepos,
+        starredRepoOwners
     }
 }
 
