@@ -55,3 +55,56 @@ export const loadStarred = (login, nextPage) => (dispatch, getState) => {
 
     return dispatch(fetchStarred(login, nextPageUrl))
 }
+
+// Fetches a single repository from Github API.
+// Relies on the custom API middleware defined in ../middleware/api.js.
+const fetchRepo = (fullName) => ({
+    [CALL_API]: {
+        types: [types.REPO_REQUEST, types.REPO_SUCCESS, types.REPO_FAILURE],
+        endpoint: `repos/${fullName}`,
+        schema: Schemas.REPO
+    }
+})
+
+// Fetches a single repository from Github API unless it is cached.
+// Relies on Redux Thunk middleware.
+export const loadRepo = (fullName, requiredFields = []) => (
+    dispatch,
+    getState
+) => {
+    const repo = getState().entities.repos[fullName]
+    if (repo && requiredFields.every((key) => repo.hasOwnProperty(key))) {
+        return null
+    }
+
+    return dispatch(fetchRepo(fullName))
+}
+
+// Fetches a page of stargazers for a particular repo.
+// Relies on the custom API middleware defined in ../middleware/api.js.
+const fetchStargazers = (fullName, nextPageUrl) => ({
+    fullName,
+    [CALL_API]: {
+        types: [
+            types.STARGAZERS_REQUEST,
+            types.STARGAZERS_SUCCESS,
+            types.STARGAZERS_FAILURE
+        ],
+        endpoint: nextPageUrl,
+        schema: Schemas.USER_ARRAY
+    }
+})
+
+// Fetches a page of stargazers for a particular repo.
+// Bails out if page is cached and user didn't specifically request next page.
+// Relies on Redux Thunk middleware.
+export const loadStargazers = (fullName, nextPage) => (dispatch, getState) => {
+    const { nextPageUrl = `repos/${fullName}/stargazers`, pageCount = 0 } =
+        getState().pagination.stargazersByRepo[fullName] || {}
+
+    if (pageCount > 0 && !nextPage) {
+        return null
+    }
+
+    return dispatch(fetchStargazers(fullName, nextPageUrl))
+}

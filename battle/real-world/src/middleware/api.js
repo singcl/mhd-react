@@ -55,6 +55,8 @@ const repoSchema = new schema.Entity(
 // Schemas for Github API responses.
 export const Schemas = {
     USER: userSchema,
+    USER_ARRAY: [userSchema],
+    REPO: repoSchema,
     REPO_ARRAY: [repoSchema]
 }
 

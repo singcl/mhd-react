@@ -20,7 +20,7 @@ const pagination = combineReducers({
             ActionTypes.STARRED_FAILURE
         ]
     }),
-    stargazerByRepo: paginate({
+    stargazersByRepo: paginate({
         mapActionToKey: (action) => action.fullName,
         types: [
             ActionTypes.STARGAZERS_REQUEST,
