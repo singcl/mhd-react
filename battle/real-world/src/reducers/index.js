@@ -19,10 +19,29 @@ const pagination = combineReducers({
             ActionTypes.STARRED_SUCCESS,
             ActionTypes.STARRED_FAILURE
         ]
+    }),
+    stargazerByRepo: paginate({
+        mapActionToKey: (action) => action.fullName,
+        types: [
+            ActionTypes.STARGAZERS_REQUEST,
+            ActionTypes.STARGAZERS_SUCCESS,
+            ActionTypes.STARGAZERS_FAILURE
+        ]
     })
 })
 
+const errorMessage = (state = null, action) => {
+    const { type, error } = action
+    if (type === ActionTypes.RESET_ERROR_MESSAGE) {
+        return null
+    } else if (error) {
+        return error
+    }
+    return state
+}
+
 export default combineReducers({
     entities,
-    pagination
+    pagination,
+    errorMessage
 })
